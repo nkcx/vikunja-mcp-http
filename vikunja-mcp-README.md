@@ -21,9 +21,5 @@ cd vikunja-mcp
 
 # Apply the fix in src/client.ts:
 # Find the line with '/tasks/all' and change it to '/tasks'
-# (grep -n "tasks/all" src/client.ts will find it)
-
-# Verify it builds:
-npm ci
-npm run build
+# (grep -n "tasks/all" src/client.ts will find them)
 ```

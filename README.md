@@ -89,24 +89,20 @@ networks:
     external: true
 ```
 
-## Building Locally
+## Initializing / Updating the Upstream Source
+
+The `vikunja-mcp/` directory is a direct copy (not a submodule) of the upstream repo with patches applied. The `init-vikunja-mcp.sh` script handles cloning, patching, and cleanup:
 
 ```bash
-git clone --recurse-submodules https://github.com/YOURUSER/vikunja-mcp-http.git
-cd vikunja-mcp-http
-docker build -t vikunja-mcp-http .
+# First time, or to update to latest upstream:
+rm -rf vikunja-mcp/src vikunja-mcp/package.json  # clear old source (keeps README.md)
+./init-vikunja-mcp.sh
+git add vikunja-mcp/
+git commit -m "Update patched aimbitgmbh/vikunja-mcp source"
+git push
 ```
 
-## Updating the Upstream Source
-
-The `vikunja-mcp/` directory is a direct copy (not a submodule) of the upstream repo with patches applied. To update:
-
-1. Clone the latest upstream: `git clone https://github.com/aimbitgmbh/vikunja-mcp.git vikunja-mcp-upstream`
-2. Diff and re-apply patches against the new version.
-3. Copy the patched source into `vikunja-mcp/`.
-4. Test, commit, push.
-
-When upstream fixes the `/tasks/all` issue, the `vikunja-mcp/` directory can be removed and the Dockerfile simplified to install from npm.
+The script will warn you if upstream has already fixed the `/tasks/all` issue, at which point the `vikunja-mcp/` directory can be removed and the Dockerfile simplified to install `@aimbitgmbh/vikunja-mcp` from npm directly.
 
 ## License
 

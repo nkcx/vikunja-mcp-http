@@ -1,6 +1,6 @@
 # Patched aimbitgmbh/vikunja-mcp Source
 
-This directory should contain the full source from https://github.com/aimbitgmbh/vikunja-mcp
+This subdirectory `vikunja-mcp` should contain the full source from https://github.com/aimbitgmbh/vikunja-mcp
 with the following patch applied:
 
 ## Patch: Fix /tasks/all endpoint for Vikunja 1.0.0+

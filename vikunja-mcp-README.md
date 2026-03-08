@@ -1,6 +1,6 @@
 # Patched aimbitgmbh/vikunja-mcp Source
 
-This subdirectory `vikunja-mcp` should contain the full source from https://github.com/aimbitgmbh/vikunja-mcp
+The sub-directory `vikunja-mcp' contains the full source from https://github.com/aimbitgmbh/vikunja-mcp
 with the following patch applied:
 
 ## Patch: Fix /tasks/all endpoint for Vikunja 1.0.0+
@@ -12,14 +12,14 @@ the `tasks_list_all` tool returns:
 
     Error: Failed to list all tasks: Vikunja API error (400): Invalid model provided: Bad Request
 
-## Setup Instructions
+See [upstream issue](https://github.com/aimbitgmbh/vikunja-mcp/issues/1).
+
+## How This Directory Was Created
+
+Run the init script from the repo root:
 
 ```bash
-# From the repo root:
-git clone https://github.com/aimbitgmbh/vikunja-mcp.git vikunja-mcp
-cd vikunja-mcp
-
-# Apply the fix in src/client.ts:
-# Find the line with '/tasks/all' and change it to '/tasks'
-# (grep -n "tasks/all" src/client.ts will find them)
+./init-vikunja-mcp.sh
 ```
+
+This clones the upstream repo, removes the nested `.git` directory, applies the sed patch to `src/client.ts`, and moves files into place. See the script for details.

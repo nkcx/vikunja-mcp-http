@@ -51,7 +51,7 @@ docker run -d \
   -p 8080:8080 \
   -e VIKUNJA_URL=https://vikunja.example.com/api/v1 \
   -e VIKUNJA_API_TOKEN=your-token-here \
-  ghcr.io/YOURUSER/vikunja-mcp-http:latest
+  ghcr.io/nkcx/vikunja-mcp-http:latest
 ```
 
 ### Claude.ai Integration
@@ -65,7 +65,7 @@ docker run -d \
 ```yaml
 services:
   vikunja-mcp:
-    image: ghcr.io/YOURUSER/vikunja-mcp-http:latest
+    image: ghcr.io/nkcx/vikunja-mcp-http:latest
     restart: unless-stopped
     environment:
       - VIKUNJA_URL=https://vikunja.example.com/api/v1
@@ -103,6 +103,10 @@ git push
 ```
 
 The script will warn you if upstream has already fixed the `/tasks/all` issue, at which point the `vikunja-mcp/` directory can be removed and the Dockerfile simplified to install `@aimbitgmbh/vikunja-mcp` from npm directly.
+
+## Acknowledgments
+
+Most of the code in this repository was written through [Claude Code](https://docs.anthropic.com/en/docs/claude-code/overview).
 
 ## License
 
